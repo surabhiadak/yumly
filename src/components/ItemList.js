@@ -1,6 +1,7 @@
 import { CDN_URL } from "../utils/constants";
 
-const ItemList = ({ items }) => {
+const ItemList = ({ items, dummy }) => {
+  console.log(dummy);
   return (
     <div>
       {items.map((item) => (
@@ -11,7 +12,13 @@ const ItemList = ({ items }) => {
           <div className="w-9/12">
             <div className="py-2">
               <span className="text-lg">{item.card.info.name}</span>
-              <span> - ₹{item.card.info.price / 100}</span>
+              <span>
+                {" "}
+                - ₹
+                {item.card.info.price
+                  ? item.card.info.price / 100
+                  : item.card.info.defaultPrice / 100}
+              </span>
             </div>
             <p className="text-xs">{item.card.info.description}</p>
           </div>
